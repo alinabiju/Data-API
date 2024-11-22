@@ -16,4 +16,12 @@ class DatabaseConnector:
         cursor.execute("SELECT id, title, status FROM Items")
         dataset = cursor.fetchall()
 
-        return dataset
+        data = []
+        for (id,title,status) in dataset:
+            data.append({'id': id, 'title': title, 'status': status})
+
+        return data
+    
+    def updateObjectState(self,id,new_state)->None:
+        print('Do nothing for now')
+        
