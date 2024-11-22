@@ -12,12 +12,25 @@ def homepage():
     return '<h1>Welcome to Api Home</h1>'
 
 
+# @app.get('/objects/<item_id>', methods=['GET','PUT'])
+# def objects_route(item_id):
+#     if request.method=='GET':
+#         return retrievedata()
+#     elif request.method=='PUT':
+#         updateObjectState(item_id,request.args.get('new_state'))
+
 @app.get('/objects')
+@cross_origin()
 def retrievedata():
     db_connector = DatabaseConnector()
     data = db_connector.getAllObjects()
 
     return data
+
+@app.put('/objects/<item_id>')
+def updateObjectState(item_id):
+    db_connector = DatabaseConnector()
+    db_connector.updateObjectState(item_id, request.args.get('new_state'))
 
 if __name__ == '__main__':
     app.run(port=5000,debug= True)
