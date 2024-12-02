@@ -23,5 +23,7 @@ class DatabaseConnector:
         return data
     
     def updateObjectState(self,id,new_state)->None:
-        print('Do nothing for now')
+        cursor = self.connection.cursor()
+        cursor.execute("""UPDATE Items SET status=%s WHERE id=%s""",(new_state,id))
+        self.connection.commit()
         
