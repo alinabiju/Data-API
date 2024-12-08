@@ -4,8 +4,11 @@ import yaml
 class DatabaseConnector:
 
     def __init__(self):
+
         with open('cred.yml','r') as cred_file:
             cred_details = yaml.load(cred_file, Loader=yaml.SafeLoader)
+            cred_file.close()
+        
         self.connection = psycopg.connect(
         dbname=cred_details.get('DBNAME'),
         user=cred_details.get('DB_USER'),
