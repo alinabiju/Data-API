@@ -1,0 +1,5 @@
+# Add your credentials here
+DBNAME: ""
+DB_USER: ""
+PASSWORD: ""
+HOSTNAME: ""
