@@ -32,4 +32,7 @@ class DatabaseConnector:
         cursor = self.connection.cursor()
         cursor.execute("""UPDATE Items SET status=%s WHERE id=%s""",(new_state,id))
         self.connection.commit()
+
+    def closeConnection(self):
+        self.connection.close()
         
