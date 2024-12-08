@@ -25,12 +25,15 @@ def retrievedata():
     db_connector = DatabaseConnector()
     data = db_connector.getAllObjects()
 
+    db_connector.closeConnection()
     return data
 
 @app.put('/objects/<item_id>')
 def updateObjectState(item_id):
     db_connector = DatabaseConnector()
     db_connector.updateObjectState(item_id, request.args.get('new_state'))
+
+    db_connector.closeConnection()
 
 if __name__ == '__main__':
     app.run(port=5000,debug= True)
