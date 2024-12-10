@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, request
 from databaseConnector import DatabaseConnector
 from flask_cors import CORS, cross_origin
 
