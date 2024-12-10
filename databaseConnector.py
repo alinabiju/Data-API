@@ -19,8 +19,8 @@ class DatabaseConnector:
     def getAllObjects(self)->any:
         cursor = self.connection.cursor()
 
-        cursor.execute("SELECT id, title, status FROM Items ORDER BY id")
-        dataset = cursor.fetchall()
+        dataset=cursor.execute("SELECT id, title, status FROM Items ORDER BY id")
+        #dataset = cursor.fetchall()
 
         data = []
         for (id,title,status) in dataset:
